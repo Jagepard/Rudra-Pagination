@@ -38,7 +38,7 @@ class Pagination
      */
     public function __construct($value)
     {
-        $this->page = $value['page'];
+        $this->page = (int) $value['page'];
     }
 
     /**
@@ -107,5 +107,15 @@ class Pagination
         }
 
         return $links;
+    }
+
+    /**
+     * @param $link
+     */
+    public function activeClass($link)
+    {
+        if ($this->getPage() == $link) {
+            echo 'class="active"';
+        }
     }
 }
