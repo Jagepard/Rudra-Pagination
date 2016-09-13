@@ -33,16 +33,6 @@ class Pagination
     protected $count;
 
     /**
-     * @var
-     */
-    protected $offset;
-
-    /**
-     * @var
-     */
-    protected $total;
-
-    /**
      * Pagination constructor.
      * @param $value
      */
@@ -92,14 +82,6 @@ class Pagination
     }
 
     /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
-    }
-
-    /**
      * @return mixed
      */
     public function getOffset()
@@ -112,14 +94,18 @@ class Pagination
      */
     public function getTotal()
     {
-        return $this->total;
+        return ceil($this->getCount() / $this->getPerPage());
     }
 
     /**
-     * @param mixed $total
+     * @return array
      */
-    public function setTotal($total)
+    public function getLinks()
     {
-        $this->total = $total;
+        for ($i = 1; $i <= $this->getTotal(); $i++) {
+            $links[] = $i;
+        }
+
+        return $links;
     }
 }
