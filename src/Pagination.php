@@ -39,7 +39,7 @@ class Pagination
      */
     public function __construct($value)
     {
-        $this->page = (int) $value['page'];
+        $this->page = (int) $value;
     }
 
     /**
