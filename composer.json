@@ -1,12 +1,12 @@
 {
     "name"        : "rudra/pagination",
-    "description" : "The Rudra framework",
+    "description" : "Rudra framework",
     "type"        : "library",
     "keywords"    : [
         "rudra",
         "pagination"
     ],
-    "license"     : "MIT",
+    "license"     : "GPL-3.0-or-later",
     "authors"     : [
         {
             "name"    : "Danila Korotkov (Jagepard)",
@@ -21,9 +21,6 @@
     },
     "require"     : {
         "php": ">=7.1"
-    },
-    "require-dev" : {
-        "satooshi/php-coveralls": "dev-master"
     },
     "autoload"    : {
         "psr-4": {
