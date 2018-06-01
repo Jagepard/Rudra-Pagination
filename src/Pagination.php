@@ -1,11 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Date: 13.09.16
- * Time: 13:07
- * 
  * @author    : Korotkov Danila <dankorot@gmail.com>
- * @copyright Copyright (c) 2016, Korotkov Danila
+ * @copyright Copyright (c) 2018, Korotkov Danila
  * @license   http://www.gnu.org/licenses/gpl.html GNU GPLv3.0
  */
 
@@ -22,32 +21,34 @@ class Pagination
      * @var
      */
     protected $page;
-
+    /**
+     * @var
+     */
+    protected $count;
     /**
      * @var
      */
     protected $perPage;
 
     /**
-     * @var
-     */
-    protected $count;
-
-    /**
      * Pagination constructor.
-     * @param $value
+     * @param     $value
+     * @param int $perPage
+     * @param int $count
      */
-    public function __construct($value)
+    public function __construct($value, $perPage, $count)
     {
-        $this->page = (int) $value;
+        $this->page    = (int)$value;
+        $this->count   = (int)$count;
+        $this->perPage = (int)$perPage;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getPage()
+    public function getOffset(): int
     {
-        return $this->page;
+        return $this->page * $this->perPage - $this->perPage;
     }
 
     /**
@@ -59,65 +60,16 @@ class Pagination
     }
 
     /**
-     * @param mixed $perPage
-     */
-    public function setPerPage($perPage)
-    {
-        $this->perPage = $perPage;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCount()
-    {
-        return $this->count;
-    }
-
-    /**
-     * @param mixed $count
-     */
-    public function setCount($count)
-    {
-        $this->count = $count;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffset()
-    {
-        return $this->getPage() * $this->getPerPage() - $this->getPerPage();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotal()
-    {
-        return ceil($this->getCount() / $this->getPerPage());
-    }
-
-    /**
      * @return array
      */
-    public function getLinks()
+    public function getLinks(): array
     {
-        for ($i = 1; $i <= $this->getTotal(); $i++) {
+        $total = ceil($this->count / $this->perPage);
+
+        for ($i = 1; $i <= $total; $i++) {
             $links[] = $i;
         }
 
         return $links;
     }
-
-    /**
-     * @param $link
-     */
-    public function activeClass($link)
-    {
-        if ($this->getPage() == $link) {
-            echo 'class="active"';
-        }
-    }
-
 }
