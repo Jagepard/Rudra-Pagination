@@ -64,6 +64,7 @@ class Pagination
      */
     public function getLinks(): array
     {
+        $links = [];
         $total = ceil($this->count / $this->perPage);
 
         for ($i = 1; $i <= $total; $i++) {
