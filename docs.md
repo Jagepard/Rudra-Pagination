@@ -1,16 +1,16 @@
 ## Table of contents
+- [Rudra\Pagination](#rudra_pagination)
+<hr>
 
-- [\Rudra\Pagination](#class-rudrapagination)
+<a id="rudra_pagination"></a>
 
-<hr /><a id="class-rudrapagination"></a>
-### Class: \Rudra\Pagination
-
-> Class Pagination
-
+### Class: Rudra\Pagination
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__construct(</strong><em>mixed</em> <strong>$value</strong>, <em>int</em> <strong>$perPage</strong>, <em>int</em> <strong>$count</strong>)</strong> : <em>void</em><br /><em>Pagination constructor.</em> |
-| public | <strong>getLinks()</strong> : <em>array</em> |
-| public | <strong>getOffset()</strong> : <em>int</em> |
-| public | <strong>getPerPage()</strong> : <em>mixed</em> |
+|public|<em><strong>__construct</strong>(  $value   $perPage   $count )</em><br>Accepts required data<br>Принимает необходимы данные|
+|public|<em><strong>getOffset</strong>(): int</em><br>Gets Offset<br>Получает смещение|
+|public|<em><strong>getPerPage</strong>()</em><br>Gets the number of materials per page<br>Получает количество материалов на страницу|
+|public|<em><strong>getLinks</strong>(): array</em><br>Gets an array with pagination<br>Получает массив с нумерацией страниц|
+<hr>
 
+###### created with [Rudra-Documentation-Collector](#https://github.com/Jagepard/Rudra-Documentation-Collector)

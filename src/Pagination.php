@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 /**
  * @author    : Jagepard <jagepard@yandex.ru">
- * @copyright Copyright (c) 2019, Jagepard
  * @license   https://mit-license.org/ MIT
  */
 
@@ -12,24 +11,18 @@ namespace Rudra;
 
 final class Pagination
 {
-    /**
-     * @var
-     */
     private $page;
-    /**
-     * @var
-     */
     private $count;
-    /**
-     * @var
-     */
     private $perPage;
 
     /**
-     * Pagination constructor.
-     * @param     $value
-     * @param int $perPage
-     * @param int $count
+     * Accepts required data
+     * ---------------------
+     * Принимает необходимы данные
+     *
+     * @param  $value
+     * @param  $perPage
+     * @param  $count
      */
     public function __construct($value, $perPage, $count)
     {
@@ -39,7 +32,11 @@ final class Pagination
     }
 
     /**
-     * @return int
+     * Gets Offset
+     * -----------
+     * Получает смещение
+     *
+     * @return integer
      */
     public function getOffset(): int
     {
@@ -47,7 +44,11 @@ final class Pagination
     }
 
     /**
-     * @return mixed
+     * Gets the number of materials per page
+     * -------------------------------------
+     * Получает количество материалов на страницу
+     *
+     * @return void
      */
     public function getPerPage()
     {
@@ -55,6 +56,10 @@ final class Pagination
     }
 
     /**
+     * Gets an array with pagination
+     * -----------------------------
+     * Получает массив с нумерацией страниц
+     *
      * @return array
      */
     public function getLinks(): array
