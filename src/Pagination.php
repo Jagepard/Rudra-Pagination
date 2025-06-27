@@ -15,6 +15,11 @@ final class Pagination
     private $count;
     private $perPage;
 
+    /**
+     * @param $value
+     * @param $perPage
+     * @param $count
+     */
     public function __construct($value, $perPage, $count)
     {
         $this->page    = (int)$value;
@@ -22,16 +27,25 @@ final class Pagination
         $this->perPage = (int)$perPage;
     }
 
+    /**
+     * @return integer
+     */
     public function getOffset(): int
     {
         return $this->page * $this->perPage - $this->perPage;
     }
 
+    /**
+     * @return integer
+     */
     public function getPerPage()
     {
         return $this->perPage;
     }
 
+    /**
+     * @return array
+     */
     public function getLinks(): array
     {
         $links = [];
