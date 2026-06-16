@@ -11,52 +11,33 @@
 
 namespace Rudra;
 
-final class Pagination
+final readonly class Pagination
 {
-    private $page;
-    private $count;
-    private $perPage;
+    private int $page;
+    private int $count;
+    private int $perPage;
 
-    /**
-     * @param $value
-     * @param $perPage
-     * @param $count
-     */
-    public function __construct($value, $perPage, $count)
+    public function __construct(int|string $value, int|string $perPage, int|string $count)
     {
         $this->page    = (int)$value;
         $this->count   = (int)$count;
         $this->perPage = (int)$perPage;
     }
 
-    /**
-     * @return integer
-     */
     public function getOffset(): int
     {
-        return $this->page * $this->perPage - $this->perPage;
+        return ($this->page - 1) * $this->perPage;
     }
 
-    /**
-     * @return integer
-     */
-    public function getPerPage()
+    public function getPerPage(): int
     {
         return $this->perPage;
     }
 
-    /**
-     * @return array
-     */
     public function getLinks(): array
     {
-        $links = [];
-        $total = ceil($this->count / $this->perPage);
+        $total = (int) ceil($this->count / $this->perPage);
 
-        for ($i = 1; $i <= $total; $i++) {
-            $links[] = $i;
-        }
-
-        return $links;
+        return $total > 0 ? range(1, $total) : [];
     }
 }
